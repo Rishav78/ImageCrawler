@@ -17,6 +17,7 @@ class Crawler {
     }
 
     void getPage(string url, string filePath, string fileName) {
+        cout << "endter" << endl;
         string fileLocation = filePath + "htmlPages/" + fileName;
         string command = "wget -O " + fileLocation + " " + url;
         system(command.c_str());
@@ -91,9 +92,7 @@ class Crawler {
             count++;
             string tag = getTag(code, index);
             string aValue = this->getAttributeValue(tag, "src=");
-            // if(aValue == "") continue;
-            // cout << tag << endl << endl;
-            if(aValue == "" || !this->filter(aValue) || !this->validURL(aValue)) continue;
+            if(aValue == "" || !this->validURL(aValue)) continue;
             this->getImage(aValue, parentdir+"images");
         }
         cout << count << endl;
@@ -114,6 +113,6 @@ class Crawler {
 int main(int argc, char const *argv[])
 {
     Crawler crawler;
-    crawler.start(argv[1], "/home/rishav/Desktop/ImageCrawler/");
+    crawler.start(argv[1], argv[2]);
     return 0;
 }

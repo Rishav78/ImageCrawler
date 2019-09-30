@@ -1,3 +1,3 @@
 # ImageCrawler
 
-command: ./a.out https://www.example.com
+command: ./a.out (url of website) (location where you wanna store images)
